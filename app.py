@@ -1,7 +1,7 @@
 import googlemaps
 import os
 import requests
-from datetime import datetime
+from datetime import datetime, timedelta
 from dateutil.relativedelta import relativedelta
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
@@ -84,8 +84,11 @@ def format_datetime(original_datetime_str: str) -> str:
     # Parse the original string into a datetime object
     dt_obj = datetime.strptime(original_datetime_str, '%Y-%m-%dT%H:%M:%SZ')
 
+    # Add 8 hours to convert to GMT +8
+    gmt8_dt_obj = dt_obj + timedelta(hours=8)
+
     # Format the datetime object into the desired string format
-    formatted_datetime_str = dt_obj.strftime('%d %b %Y @ %H%M HRS')
+    formatted_datetime_str = gmt8_dt_obj.strftime('%d %b %Y @ %H%M HRS')
 
     return formatted_datetime_str
 
@@ -115,6 +118,26 @@ def format_address(coordinates: List[float], api_key: str) -> str:
             return 'No address found for the provided coordinates.'
     else:
         return f'Error: {response.status_code} - {response.text}'
+
+def generate_event_description(event_name: str, event_description: str, model: genai.GenerativeModel) -> str:
+    """
+    Formats an event description by removing the phrase 
+    'Sourced from predicthq.com - ' from the input string.
+    Subsequently, generates a description of the event 
+    using the Gemini model
+
+    Args:
+        event_name (str): The name of the event.
+        event_description (str): The original event description.
+        model (genai.GenerativeModel): The generative AI model to use.
+
+    Returns:
+        str: The generated event description.
+    """
+    event_description = event_description.replace("Sourced from predicthq.com - ", "")
+    prompt = f"Provide a 350-400 character description for the following event: {event_name}. Here is a simple description of the event that I want you to expand upon: {event_description}"
+    response = model.generate_content(prompt)
+    return response.text
 
 def event_search_URL(event_title: str) -> str:
     """
@@ -203,7 +226,7 @@ def fetch_events_from_predicthq(query: str) -> Union[List[Dict[str, Any]], int]:
                 "Start Date & Time": format_datetime(event['start']),
                 "End Date & Time": format_datetime(event['end']),
                 "Location": format_address(event['location'], GEOCODING_API_KEY),
-                "Description": event.get('description', 'No description'),
+                "Description": generate_event_description(event['title'], event.get('description', 'No description'), model),
                 "Citation": event_search_URL(event['title']),
             }
             events_data.append(data)
