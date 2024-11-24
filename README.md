@@ -46,7 +46,7 @@ cd local-services-events-api
 ### 2. Create a Virtual Environment
 
 ```
-python3 -m venv API_env   # 
+python3 -m venv API_env
 source API_env/bin/activate  # On Windows use 'venv\Scripts\activate'
 ```
 
