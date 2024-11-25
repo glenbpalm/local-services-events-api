@@ -88,3 +88,33 @@ def format_opening_hours(opening_hours: Dict[str, Any]) -> Dict[str, str]:
         return week_hours
     except:
         return {}
+
+def format_contact_number(number: str) -> str:
+    """
+    Formats a Singaporean contact number to the format +65-XXXX-XXXX.
+    Handles NoneType inputs gracefully.
+
+    Args:
+        number (str): The input contact number in the format 'XXXX XXXX', or None.
+
+    Returns:
+        str: The formatted contact number in the format '+65-XXXX-XXXX',
+             or 'None' if the input is None or invalid.
+    """
+    if number is None:
+        return "None"
+    
+    # Ensure the input is a string
+    if not isinstance(number, str):
+        return "None"
+
+    # Remove any whitespace from the input
+    cleaned_number = number.replace(" ", "")
+    
+    # Check if the cleaned number has exactly 8 digits and is numeric
+    if len(cleaned_number) != 8 or not cleaned_number.isdigit():
+        return "None"
+
+    # Format the number with the Singapore country code
+    formatted_number = f"+65-{cleaned_number[:4]}-{cleaned_number[4:]}"
+    return formatted_number
