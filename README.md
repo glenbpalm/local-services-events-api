@@ -142,23 +142,23 @@ You can test the API endpoint using Postman by following these steps:
 ```
 [
     {
-        "Title": "Stories in Art: Portable Cinema with National Gallery Singapore",
-        "Start Date & Time": "23 Nov 2024 @ 0330 HRS",
-        "End Date & Time": "23 Nov 2024 @ 0415 HRS",
-        "Location": "1 HarbourFront Walk, Singapore 098585",
-        "Description": "Sourced from predicthq.com - Join us for a storytelling session to learn about artist Chua Mia Tee’s childhood memories of watching movies through portable street carts.",
-        "Citation": "https://www.google.com/search?q=Stories+in+Art:+Portable+Cinema+with+National+Gallery+Singapore"
+        "Title": "OFFERING OF GONGS + SINGING BOWLS SOUND",
+        "Start Date & Time": "25 Nov 2024 @ 1100 HRS",
+        "End Date & Time": "25 Nov 2024 @ 1200 HRS",
+        "Location": "2 Stanley St, Singapore 068721",
+        "Description": "Immerse yourself in a sacred sonic cleansing.  Our Offering of Gongs & Singing Bowls purifies the temple's energy, creating a receptive space for inner peace.  Deep resonant vibrations wash away negativity, leaving you cleansed and open to the present moment.  Experience the transformative power of sound as it harmonizes your body and spirit, fostering a profound connection to yourself and the divine. This ancient practice leaves you feeling renewed and centered.\n",
+        "Citation": "https://www.google.com/search?q=OFFERING+OF+GONGS+++SINGING+BOWLS+SOUND"
     },
     ...
     ...
     ...
     {
-        "Title": "PURE SHORES – GONGS + OCEAN DRUM SOUND MEDITATION",
-        "Start Date & Time": "24 Nov 2024 @ 0400 HRS",
-        "End Date & Time": "24 Nov 2024 @ 0500 HRS",
+        "Title": "HEAL FROM WITHIN: AFFIRMATIONS + TIBETAN SINGING BOWLS + OCEAN DRUM",
+        "Start Date & Time": "26 Nov 2024 @ 2000 HRS",
+        "End Date & Time": "26 Nov 2024 @ 2100 HRS",
         "Location": "2 Stanley St, Singapore 068721",
-        "Description": "Sourced from predicthq.com - Let the sound of the gongs and ocean drum bring you on a journey of being, lifting your spirits and soothing your heart.",
-        "Citation": "https://www.google.com/search?q=PURE+SHORES+–+GONGS+++OCEAN+DRUM+SOUND+MEDITATION"
+        "Description": "Unleash your inner healer at HEAL FROM WITHIN!  Experience the transformative power of positive affirmations, resonating Tibetan singing bowls, and the mesmerizing ocean drum. This immersive practice gently guides you to reconnect with your body's innate wisdom, releasing stress and promoting deep relaxation.  Feel your energy revitalized as ancient sounds and empowering words unlock your self-healing potential, leaving you feeling calm, centered, and profoundly renewed.  Journey to a place of deep peace and well-being.\n",
+        "Citation": "https://www.google.com/search?q=HEAL+FROM+WITHIN:+AFFIRMATIONS+++TIBETAN+SINGING+BOWLS+++OCEAN+DRUM"
     }
 ]
 ```
