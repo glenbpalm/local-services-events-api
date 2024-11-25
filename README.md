@@ -59,6 +59,23 @@ pip install -r requirements.txt
 
 ## Running the Application using Docker
 
+### Setting Configurations
+Set the desired configurations in the `config.yaml` file:
+```
+model_name: "gemini-1.5-flash"
+
+limits:
+  predicthq_event_limit: 5
+  google_places_limit: 5
+
+options:
+  include_top_offerings_prices: False
+```
+- **model_name**: Define which Gemini Model is to be used. Default model is Gemini 1.5 Flash.
+- **predicthq_event_limit**: Set the number of events to fetch from PredictHQ.
+- **google_places_limit**: Set the number of places to fetch from Google Places API
+- **include_top_offerings_prices**: State whether or not to generate Top Offerings & Prices for each location. Can either be True or False. Default value is `False` due to the fact that setting it to `True` will slow down inference time. This is because it uses the the Gemini Models' Google Search Retrieval Tool (inaccurate at times as well).
+
 ### Building the Docker Image
 Build the Docker Image with the tag `local-services-api`:
 ```
@@ -76,7 +93,7 @@ docker run --name gcloud-gemini-container -d \
   -e GEOCODING_API_KEY=<your Google Geocoding API Key> \
   local-services-api
 ```
-**Note**: Replace `<your ...>` with your actual API keys and tokens.
+**Note**: Replace `<your ...>` with your actual API keys and tokens ( E.g. GOOGLE_PLACES_API_KEY=CYbgk.......ogjP )
 
 ## API Endpoints
 
@@ -114,11 +131,12 @@ You can test the API endpoint using Postman by following these steps:
 ### Error Responses
 - **404**: No results found for the given query.
 - **500**: An error occurred while processing the request.
-- **400**: Most likely inputted a wrong API Key.
+- **400**: The server cannot process the request due to something that is perceived to be a client error (e.g. malformed request syntax, invalid request parameters, wrong API Key)
+- **429**: Resource exhausted, exceeded API rate limits. This error occurs when using the free-of-charge Gemini API, and setting `include_top_offerings_prices` to `True` in the `config.yaml` file. This error should be resolved when using the paid Gemini API plan.
 
 ## Example Requests & Responses
 
-**Example URL (Events)**: `http://localhost:80/search?q=concerts`
+**Example URL (Events)**: `http://localhost:80/search?q=give me some concerts that are coming up`
 
 **Response Example (Events)**:
 ```
@@ -147,7 +165,7 @@ You can test the API endpoint using Postman by following these steps:
 ---
 **Example URL (Locations)**: `http://localhost:80/search?q=Local hawker centres near orchard road`
 
-**Response Example (Locations)**:
+**Response Example (Locations with Top Offerings ON)**:
 ```
 [
     {
@@ -155,31 +173,41 @@ You can test the API endpoint using Postman by following these steps:
         "Address": "500 Clemenceau Ave N, Singapore 229495",
         "Opening Hours": {},
         "Description": "Newton Food Centre is a vibrant hawker centre in Singapore, a haven for local and international food lovers.  Experience authentic Singaporean cuisine at affordable prices. From sizzling satay and flavourful laksa to fragrant Hainanese chicken rice and delicious char kway teow, a diverse range of dishes awaits.  It's a bustling, atmospheric place perfect for a quick and tasty meal or a longer exploration of culinary delights.  A true Singaporean experience!\n",
-        "Contact Number": null,
+        "Contact Number": "None",
         "Citation": [
             "https://maps.google.com/?cid=15313617145150253769"
-        ]
+        ],
+        "Top Offerings & Prices": {
+            "Satay": "$0.80/stick (min 10)",
+            "BBQ chicken wings": "$1.50/pc (min 3)",
+            "Chilli Crab": "NA"
+        }
     },
     ...
     ...
     ...
     {
-        "Name": "Whampoa Makan Place",
-        "Address": "90 Whampoa Dr, Singapore 320090",
+        "Name": "Chinatown Complex Market & Food Centre",
+        "Address": "46 Smith St, Singapore 058956",
         "Opening Hours": {
-            "Sun": "1100-2130",
-            "Mon": "1100-2130",
-            "Tue": "1100-2130",
-            "Wed": "1100-2130",
-            "Thu": "1100-2130",
-            "Fri": "1100-2130",
-            "Sat": "1100-2130"
+            "Sun": "0800-2100",
+            "Mon": "0800-2100",
+            "Tue": "0800-2100",
+            "Wed": "0800-2100",
+            "Thu": "0800-2100",
+            "Fri": "0800-2100",
+            "Sat": "0800-2100"
         },
-        "Description": "Whampoa Makan Place is a vibrant food haven in Singapore's Whampoa area.  This bustling establishment offers a diverse range of local delights, from hawker fare to more refined dishes. Experience authentic flavours and a lively atmosphere, perfect for a casual meal or a quick bite.  A great spot for exploring Singaporean cuisine in a friendly setting.  Expect delicious food and a bustling, energetic vibe.\n",
-        "Contact Number": "9824 1696",
+        "Description": "Chinatown Complex Market & Food Centre is a vibrant hawker centre in Singapore's Chinatown.  This bustling establishment offers a huge variety of affordable and delicious local cuisine, from traditional noodles and rice dishes to unique snacks.  Expect a lively atmosphere, packed with locals and tourists alike, all enjoying the authentic flavours and cultural immersion.  A must-visit for food lovers exploring Singapore's culinary scene.\n",
+        "Contact Number": "None",
         "Citation": [
-            "https://maps.google.com/?cid=13929068811145880670"
-        ]
+            "https://maps.google.com/?cid=13315514385399549060"
+        ],
+        "Top Offerings & Prices": {
+            "Laksa": "$2",
+            "Hong Kong Soya Sauce Chicken": "NA",
+            "Claypot Rice": "$8"
+        }
     }
 ]
 ```
