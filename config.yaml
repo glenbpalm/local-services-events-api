@@ -3,3 +3,6 @@ model_name: "gemini-1.5-flash"
 limits:
   predicthq_event_limit: 5  # Number of events to fetch from PredictHQ
   google_places_limit: 5    # Number of places to fetch from Google Places API
+
+options:
+  include_top_offerings_prices: True  # Set to True or False
