@@ -101,23 +101,16 @@ docker run --name gcloud-gemini-container -d \
 Searches for events or places based on the user's query. The endpoint determines whether the query is about an event or a location.
 
 ### Requesting using Postman
-You can test the API endpoint using Postman by following these steps:
-1. Launch the Postman application
-2. Create a New Request
-   - Click on "New" and select "HTTP Request".
-3. Set the Request Method and URL
-   - Change the request method to GET.
-   - Enter the URL: `http://localhost:80/search`
-4. Add Query Parameters
-   - Click on the "Params" tab below the URL field.
-   - Add a new key-value pair:
-      - Key: `q`
-      - Value: Your search query (e.g., `concerts`)
-5. Send the Request
-   - Click on the "Send" button.
-6. View the Response
-   - The API's JSON response will appear in the response pane below.
-   - You can switch between Pretty, Raw, and Preview to view the response in different formats.
+You can test the API endpoint using the Postman collection file that is located in the `postman` folder of this repository. 
+1. **Download the Postman Collection**  
+   - Navigate to the `postman` folder in this repository.
+   - Download the file: `postman/API_postman_collection.json`.
+2. **Import the Collection into Postman**
+   - Open Postman.
+   - Click on `File > Import`.
+   - Select the downloaded `API_postman_collection.json` file.
+3. **Send a Request** 
+   - Ensure the Docker container is running and click `Send` to make a request
 
 ### Notes
 - Ensure that the API is running and accessible at `http://localhost:80`.
