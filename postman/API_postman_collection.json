@@ -1,0 +1,282 @@
+{
+	"info": {
+		"_postman_id": "05853972-7f86-4620-955d-4d50792d5807",
+		"name": "google-cloud-gemini",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39839681"
+	},
+	"item": [
+		{
+			"name": "Fusion Peranakan Cuisine Places",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:80/search?q=Fusion Peranakan Cuisine places",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Fusion Peranakan Cuisine places"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Birthday Party Venues for children",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:80/search?q=Birthday Party Venues for children",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Birthday Party Venues for children"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Muslim Friendly Salon",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:80/search?q=Muslim Friendly Salon",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Muslim Friendly Salon"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Local hawker centres near orchard road",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:80/search?q=Local hawker centres near orchard road",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "Local hawker centres near orchard road"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "upcoming performances",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:80/search?q=upcoming performances",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "upcoming performances"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "what are some upcoming exhibitions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:80/search?q=what are some upcoming exhibitions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "what are some upcoming exhibitions"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "give me some concerts that are coming up",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:80/search?q=give me some concerts that are coming up",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "give me some concerts that are coming up"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "any upcoming festivals?",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:80/search?q=any upcoming festivals?",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "80",
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "any upcoming festivals?"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "are there any sporting events happening soon",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost/search?q=are there any sporting events happening soon",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "are there any sporting events happening soon"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
